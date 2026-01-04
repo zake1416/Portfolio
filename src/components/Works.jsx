@@ -24,7 +24,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className='bg-#[0000000] p-5 rounded-2xl sm:w-[360px] w-full'
+        className='bg-[#0b1226] border border-white/10 p-5 rounded-2xl sm:w-[360px] w-full'
       >
         <div className='relative w-full h-[230px]'>
           <img
@@ -80,11 +80,9 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
+          Selected work focused on LLM applications, agent systems, and
+          production-ready AI pipelines. Each project highlights shipping
+          outcomes, not just demos.
         </motion.p>
       </div>
 

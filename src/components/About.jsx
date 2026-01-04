@@ -47,13 +47,11 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I’m a data analyst who turns complex datasets into clear, actionable insights. 
-        With experience across data cleaning, analysis, visualization, and predictive modeling, I help teams make confident, data-driven decisions. 
-        I enjoy finding patterns, simplifying ambiguity, and transforming raw data into meaningful stories. 
-        My work blends technical skill with strategic thinking, ensuring every model, dashboard, or analysis drives real business value. 
-        I’m continuously learning and excited about how data can shape smarter decisions.
-        
-        
+        I build applied AI systems that move from prototype to production.
+        My focus is LLM engineering, retrieval pipelines, and agent workflows,
+        backed by strong software fundamentals in CI/CD, testing, and
+        observability. I have delivered in regulated domains and care about
+        safety, reliability, and measurable impact.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

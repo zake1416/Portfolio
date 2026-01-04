@@ -15,7 +15,9 @@ const Navbar = () => {
   useEffect(() => {
     // set active based on current path
     const current = navLinks.find((nav) =>
-      nav.path === "/" ? location.pathname === "/" : location.pathname === nav.path
+      nav.path === "/"
+        ? location.pathname === "/"
+        : location.pathname.startsWith(nav.path)
     );
     setActive(current ? current.title : "");
   }, [location.pathname]);
@@ -40,8 +42,11 @@ const Navbar = () => {
     //     scrolled ? "bg-primary" : "bg-transparent"
     //   }`}
     // >
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-[#ffefd5]/90 backdrop-blur-md`}>
-
+    <nav
+      className={`${styles.paddingX} w-full flex items-center py-4 fixed top-0 z-20 backdrop-blur-md ${
+        scrolled ? "bg-[#050816]/90 border-b border-white/10" : "bg-transparent"
+      }`}
+    >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
@@ -52,7 +57,7 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-20 h-10 object-contain" />
-          <p className="text-[#000000] text-[18px] font-bold cursor-pointer flex">
+          <p className="text-slate-100 text-[18px] font-bold cursor-pointer flex">
             &nbsp;<span className="sm:block hidden">| Home</span>
           </p>
         </Link>
@@ -63,8 +68,8 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-[#000000]" : "text-white"
-              } hover:text-[#000000] text-[18px] font-bold cursor-pointer flex`}
+                active === nav.title ? "text-cyan-300" : "text-slate-200"
+              } hover:text-cyan-200 text-[16px] font-semibold tracking-wide cursor-pointer flex`}
             >
               <Link
                 to={nav.path}
@@ -84,21 +89,21 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain"
+            className="w-[28px] h-[28px] object-contain invert"
             onClick={() => setToggle(!toggle)}
           />
 
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 white-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 bg-[#0b1226] border border-white/10 absolute top-20 right-0 mx-4 my-2 min-w-[160px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
-                  className={`font-poppins font-bold cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-[#000000]" : "text-secondary"
+                  className={`font-semibold cursor-pointer text-[14px] ${
+                    active === nav.title ? "text-cyan-300" : "text-slate-200"
                   }`}
                 >
                   <Link

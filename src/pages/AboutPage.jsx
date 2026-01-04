@@ -4,7 +4,7 @@ import { About } from "../components";
 
 const AboutPage = () => {
   return (
-    <main className="bg-[#ffefd5] min-h-screen pt-8">
+    <main className="min-h-screen pt-8">
       <div className="w-full">
         <About />
       </div>

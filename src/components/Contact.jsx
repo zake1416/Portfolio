@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -8,61 +7,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Abhishek Birajdar ",
-          from_email: form.email,
-          to_email: "abhishekb1416@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
-  };
+  const formAction = "https://formspree.io/f/yourFormId";
 
   return (
     <div
@@ -70,57 +15,58 @@ const Contact = () => {
     >
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+        className='flex-[0.75] bg-[#0b1226] border border-white/10 p-8 rounded-2xl'
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
         <form
-          ref={formRef}
-          onSubmit={handleSubmit}
+          action={formAction}
+          method="POST"
           className='mt-12 flex flex-col gap-8'
         >
+          <input type="hidden" name="_subject" value="Portfolio inquiry" />
           <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Name</span>
+            <span className='text-slate-200 font-medium mb-4'>Your Name</span>
             <input
               type='text'
               name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              placeholder="Your name"
+              required
+              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
             />
           </label>
           <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your email</span>
+            <span className='text-slate-200 font-medium mb-4'>Your Email</span>
             <input
               type='email'
               name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your web address?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              placeholder="your@email.com"
+              required
+              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
             />
           </label>
           <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Message</span>
+            <span className='text-slate-200 font-medium mb-4'>Your Message</span>
             <textarea
               rows={7}
               name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What you want to say?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              placeholder='Share your idea or role details.'
+              required
+              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
             />
           </label>
 
           <button
             type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+            className='bg-cyan-400/20 hover:bg-cyan-400/30 transition-colors py-3 px-8 rounded-xl outline-none w-fit text-slate-100 font-semibold border border-cyan-400/40 shadow-md shadow-cyan-500/20'
           >
-            {loading ? "Sending..." : "Send"}
+            Send
           </button>
         </form>
+        <p className="mt-4 text-xs text-slate-400">
+          Replies go directly to my inbox. Expect a response within 48 hours.
+        </p>
       </motion.div>
 
       <motion.div

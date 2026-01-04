@@ -170,33 +170,37 @@ export const navLinks = [
     path: "/projects",
   },
   {
+    id: "blog",
+    title: "Blog",
+    path: "/blog",
+  },
+  {
     id: "contact",
     title: "Contact",
     path: "/contact",
   },
 ];
 
-// Reframed as Data / Analytics focused services
 const services = [
   {
-    title: "Data Analyst",
+    title: "LLM Engineer",
     icon: web,
   },
   {
-    title: "Machine Learning Engineer",
+    title: "Agentic AI Systems",
     icon: mobile,
   },
   {
-    title: "Data Visualization & BI",
+    title: "RAG + Data Pipelines",
     icon: creator,
   },
   {
-    title: "Data Engineering Foundations",
+    title: "MLOps + Reliability",
     icon: backend,
   },
 ];
 
-// Re-ordered / tweaked to highlight data stack
+// Re-ordered to highlight AI/LLM stack
 const technologies = [
   {
     name: "Python",
@@ -207,7 +211,7 @@ const technologies = [
     icon: numpy,
   },
   {
-    name: "TensorFlow",
+    name: "PyTorch",
     icon: threejs, // if you prefer, keep tensorflow icon here instead
   },
   {
@@ -223,11 +227,11 @@ const technologies = [
     icon: tailwind,
   },
   {
-    name: "MongoDB",
+    name: "Vector DBs",
     icon: mongodb,
   },
   {
-    name: "Apache NiFi",
+    name: "Airflow",
     icon: nifi,
   },
   {
@@ -235,7 +239,7 @@ const technologies = [
     icon: git,
   },
   {
-    name: "Grafana",
+    name: "Observability",
     icon: grafana,
   },
   {
@@ -263,67 +267,52 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Data Analyst / Software Engineer",
-    company_name: "Accenture",
+    title: "Software Engineer, AI Delivery",
+    company_name: "Accenture (Credit Suisse)",
     icon: accenture,
     iconBg: "#ffffff",
-    date: "August 2021 - August 2023",
+    date: "Aug 2021 - Aug 2023",
     points: [
-      "Analyzed large-scale financial data across 22+ enterprise applications supporting APAC & EMEA regulatory reporting.",
-      "Designed automated ETL workflows using Apache NiFi, improving data pipeline efficiency and reducing manual intervention by 30%.",
-      "Performed root-cause analysis on data quality issues, improving accuracy of client statements and compliance outputs.",
-      "Built monitoring dashboards using Grafana and Telegraf to track 200+ data pipeline metrics, enabling faster incident resolution.",
-      "Collaborated with cross-functional teams to translate business requirements into analytics tasks and reporting enhancements.",
-      "Mentored junior team members on SQL debugging, data validation techniques, and pipeline best practices."
+      "Built CI/CD pipelines with automated regression tests and UAT gates to ship releases with zero critical defects.",
+      "Developed a document generation service that reduced manual reporting time from days to minutes.",
+      "Implemented Grafana-based monitoring to cut incident response time and improve system observability.",
+      "Delivered data migrations and backend upgrades with strict compliance and audit readiness.",
     ],
   },
   {
-    title: "Junior Data Analyst",
-    company_name: "Accenture",
-    icon: accenture,
-    iconBg: "#ffffff",
-    date: "Aug 2021 - Oct 2021",
-    points: [
-      "Assisted in developing internal reporting tools using React.js and Python to automate data validation and QA checks.",
-      "Worked with designers and product managers to improve usability of analytics dashboards.",
-      "Implemented performance fixes and optimized queries to enhance data retrieval processes.",
-      "Contributed to code reviews and identified improvements in analytics scripts and data handling functions."
-    ],
-  },
-  {
-    title: "Data Research Intern",
-    company_name: "Bhabha Atomic Research Centre (BARC)",
+    title: "GenAI Intern",
+    company_name: "RoundTechSquare",
     icon: tesla,
+    iconBg: "#E6DEDD",
+    date: "May 2024 - Aug 2024",
+    points: [
+      "Built an LLM-powered career recommender with prompt iteration and evaluation loops.",
+      "Shipped a voice-enabled task assistant using speech APIs and FastAPI services.",
+      "Ran user tests and refined prompts to improve clarity and response quality.",
+    ],
+  },
+  {
+    title: "Founder, Agentic AI Platform",
+    company_name: "Stealth Startup",
+    icon: shopify,
+    iconBg: "#ffffff",
+    date: "2024 - Present",
+    points: [
+      "Designed multi-agent workflows with LangGraph/CrewAI and tool calling.",
+      "Built RAG pipelines with vector search and long-term memory for grounded responses.",
+      "Deployed containerized services with monitoring, trace IDs, and fallback logic.",
+    ],
+  },
+  {
+    title: "Applied AI Research Intern",
+    company_name: "Bhabha Atomic Research Centre (BARC)",
+    icon: meta,
     iconBg: "#E6DEDD",
     date: "Nov 2019 - Jan 2020",
     points: [
-      "Performed analytical research for reactor control systems, using Python and Matplotlib to visualize safety patterns.",
-      "Led a team of 4 to build an HMI prototype for the Reactor Control Division, improving data clarity for critical decision-making.",
-      "Conducted risk assessment and anomaly analysis, contributing to an automated real-time alert system.",
-    ],
-  },
-  {
-    title: "Research Intern",
-    company_name: "VESIT – Mumbai University",
-    icon: shopify,
-    iconBg: "#ffffff",
-    date: "May 2018 - July 2019",
-    points: [
-      "Built embedded-system experiments for sensor-based anomaly detection using infrared and ultrasonic data.",
-      "Analyzed environmental data from ARM microcontroller outputs to evaluate real-time terrain and obstacle patterns.",
-      "Improved detection accuracy of an early-stage humanoid robot prototype through iterative testing and data analysis."
-    ],
-  },
-  {
-    title: "Technical Research Intern",
-    company_name: "Board of Radiation & Isotope Technology",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Nov 2018 - Jan 2019",
-    points: [
-      "Performed data collection and calibration for radiation exposure experiments in the agriculture domain.",
-      "Optimized PLC parameters through statistical analysis to increase efficiency of food irradiation processes.",
-      "Collaborated with scientists to convert raw experimental data into clear reports and operational insights."
+      "Applied ML to safety pattern analysis and anomaly detection prototypes.",
+      "Built data visualizations to improve clarity for mission-critical decisions.",
+      "Collaborated with researchers on validation and evaluation routines.",
     ],
   },
 ];
@@ -331,7 +320,7 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "Abhishek combines analytical thinking with creativity, consistently uncovering insights that improve outcomes. His ability to learn rapidly makes him an invaluable contributor.",
+      "Abhishek blends strong engineering discipline with practical AI insight. He delivers systems that are reliable, measurable, and ready for production.",
     name: "Dr. Nadir Charnia",
     designation: "Professor",
     company: "Mumbai University",
@@ -339,7 +328,7 @@ const testimonials = [
   },
   {
     testimonial:
-      "A reliable team member with a sharp data-driven mindset. Abhishek brings clarity to complex problems and always contributes high-quality work.",
+      "He brings clarity to complex AI problems and consistently ships with quality and observability in mind.",
     name: "Amrita Prasad",
     designation: "Senior Software Analyst",
     company: "Accenture",
@@ -347,7 +336,7 @@ const testimonials = [
   },
   {
     testimonial:
-      "His structured thinking, collaborative nature, and strong analytical skills make him stand out. Abhishek can translate data into meaningful strategies effortlessly.",
+      "Abhishek is thoughtful, fast, and impact-oriented. His agentic AI work is both ambitious and grounded.",
     name: "Aloke Tewary",
     designation: "Senior Software Engineer",
     company: "Here Technologies",
@@ -357,37 +346,37 @@ const testimonials = [
 
 const projects = [
   {
-    name: "COVID-19 Social Distancing Analytics",
+    name: "OptiPulse",
     description:
-      "Built a real-time analytics system that detects social distancing violations using YOLOv3, OpenCV, and SVM. Generated visual insights for crowd density, risk zones, and behavioral patterns.",
+      "Multi-agent LLM system for hospital inventory coordination with forecasting, negotiation, and audit-friendly decisions.",
     tags: [
-      { name: "ComputerVision", color: "blue-text-gradient" },
-      { name: "OpenCV", color: "green-text-gradient" },
-      { name: "Python", color: "pink-text-gradient" },
+      { name: "Agents", color: "blue-text-gradient" },
+      { name: "LLMs", color: "green-text-gradient" },
+      { name: "FastAPI", color: "pink-text-gradient" },
     ],
     image: carrent,
     source_code_link: "https://github.com/",
   },
   {
-    name: "Road Quality Prediction & Route Insights",
+    name: "Agent Orchestration Platform",
     description:
-      "Developed a predictive analytics model to estimate road quality and travel-time impact using K-means clustering on sensor and GPS data. Built a mobile interface to visualize safer, faster route options.",
+      "Hybrid LangGraph + CrewAI orchestration with RAG, tool calling, and observability for enterprise workflows.",
     tags: [
-      { name: "Clustering", color: "blue-text-gradient" },
-      { name: "Firebase", color: "green-text-gradient" },
-      { name: "Geospatial", color: "pink-text-gradient" },
+      { name: "RAG", color: "blue-text-gradient" },
+      { name: "MLOps", color: "green-text-gradient" },
+      { name: "Tracing", color: "pink-text-gradient" },
     ],
     image: jobit,
     source_code_link: "https://github.com/",
   },
   {
-    name: "COVID Mental Health NLP Chatbot",
+    name: "Voice + GenAI Assistant",
     description:
-      "Created an NLP-powered chatbot using LSTM and sentiment analysis to detect stress levels during COVID-19. Extracted linguistic patterns and emotional cues from user input to provide guided responses.",
+      "LLM-powered career recommender and voice task assistant with structured prompts and evaluation loops.",
     tags: [
-      { name: "NLP", color: "blue-text-gradient" },
-      { name: "LSTM", color: "green-text-gradient" },
-      { name: "DeepLearning", color: "pink-text-gradient" },
+      { name: "Prompting", color: "blue-text-gradient" },
+      { name: "Speech", color: "green-text-gradient" },
+      { name: "NLP", color: "pink-text-gradient" },
     ],
     image: tripguide,
     source_code_link: "https://github.com/",

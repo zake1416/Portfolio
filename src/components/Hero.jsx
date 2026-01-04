@@ -10,19 +10,19 @@ const Hero = () => {
         
         {/* Left Vertical Line */}
         <div className="flex flex-col justify-center items-center mt-2">
-          <div className="w-3 h-3 rounded-full bg-black" />
-          <div className="w-1 h-28 bg-gradient-to-b from-black to-gray-500" />
+          <div className="w-3 h-3 rounded-full bg-cyan-300" />
+          <div className="w-1 h-28 bg-gradient-to-b from-cyan-300 to-transparent" />
         </div>
 
         {/* Text Content */}
         <div className="flex flex-col">
-          <h1 className="text-[42px] sm:text-[50px] lg:text-[56px] font-black leading-tight text-black">
-            Hi, I’m <span className="text-black">Abhishek Birajdar</span>
+          <h1 className="text-[42px] sm:text-[50px] lg:text-[56px] font-black leading-tight text-slate-100">
+            Hi, I’m <span className="text-slate-100">Abhishek Birajdar</span>
           </h1>
 
-          <p className="mt-4 text-[18px] sm:text-[20px] text-gray-700 leading-relaxed">
-            Passionate Data Analyst with 3+ years of experience<br />
-            Google Certified Professional Data Analyst
+          <p className="mt-4 text-[18px] sm:text-[20px] text-slate-300 leading-relaxed">
+            AI Engineer building reliable LLM systems, RAG pipelines, and
+            agent workflows for real products.
           </p>
         </div>
       </div>

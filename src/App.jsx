@@ -8,11 +8,13 @@ import AboutPage from "./pages/AboutPage";
 import ExperiencePage from "./pages/ExperiencePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="bg-[#ffefd5] min-h-screen relative z-0">
+      <div className="min-h-screen relative z-0 text-slate-100">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,6 +22,8 @@ const App = () => {
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </div>
     </BrowserRouter>
