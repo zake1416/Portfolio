@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ComputersCanvas } from "./canvas";
 
 const focusAreas = [
@@ -8,13 +9,67 @@ const focusAreas = [
   "Eval and observability",
 ];
 
-const systemStats = [
-  { label: "Focus", value: "Applied AI delivery" },
-  { label: "Stack", value: "Models, infra, UX" },
-  { label: "Mode", value: "Prototype to production" },
+const snapshotCards = [
+  {
+    id: "system",
+    title: "System Snapshot",
+    lines: [
+      { label: "pipeline.status", value: "healthy" },
+      { label: "retrieval.mode", value: "grounded" },
+      { label: "agent.loop", value: "monitored" },
+      { label: "deployment.goal", value: "reliable" },
+    ],
+    metrics: [
+      { label: "Focus", value: "Applied AI delivery" },
+      { label: "Stack", value: "Models, infra, UX" },
+      { label: "Mode", value: "Prototype to production" },
+    ],
+  },
+  {
+    id: "workflow",
+    title: "Workflow Snapshot",
+    lines: [
+      { label: "planner.stage", value: "active" },
+      { label: "tool.routing", value: "stable" },
+      { label: "memory.policy", value: "session-aware" },
+      { label: "fallback.path", value: "configured" },
+    ],
+    metrics: [
+      { label: "Agents", value: "Multi-step orchestration" },
+      { label: "Tools", value: "Grounded execution" },
+      { label: "State", value: "Tracked across flows" },
+    ],
+  },
+  {
+    id: "quality",
+    title: "Quality Snapshot",
+    lines: [
+      { label: "eval.coverage", value: "expanding" },
+      { label: "trace.visibility", value: "live" },
+      { label: "latency.goal", value: "controlled" },
+      { label: "failure.mode", value: "graceful" },
+    ],
+    metrics: [
+      { label: "Eval", value: "Behavior over demos" },
+      { label: "Ops", value: "Observability first" },
+      { label: "Ship", value: "Safe to production" },
+    ],
+  },
 ];
 
 const Hero = () => {
+  const [activeSnapshot, setActiveSnapshot] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveSnapshot((current) => (current + 1) % snapshotCards.length);
+    }, 3400);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const currentSnapshot = snapshotCards[activeSnapshot];
+
   return (
     <section className="relative flex h-full min-h-0 w-full items-start justify-center overflow-hidden sm:items-center">
       <div className="absolute left-[8%] top-[18%] h-24 w-24 rounded-full border border-stone-900/10 bg-white/40 blur-[2px]" />
@@ -27,38 +82,57 @@ const Hero = () => {
             <div className="console-panel">
               <div className="flex items-center justify-between border-b border-stone-900/10 px-5 py-3">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-stone-500">
-                  System Snapshot
+                  {currentSnapshot.title}
                 </p>
                 <div className="flex gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#d98b73]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#d8b46a]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#8db5ab]" />
-                </div>
-              </div>
-              <div className="space-y-4 px-5 py-5">
-                <p className="font-mono text-[12px] leading-6 text-stone-700">
-                  <span className="text-amber-800">pipeline.status</span> = healthy
-                  <br />
-                  <span className="text-amber-800">retrieval.mode</span> = grounded
-                  <br />
-                  <span className="text-amber-800">agent.loop</span> = monitored
-                  <br />
-                  <span className="text-amber-800">deployment.goal</span> = reliable
-                </p>
-
-                <div className="grid gap-3">
-                  {systemStats.map((item) => (
-                    <div key={item.label} className="metric-card">
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-stone-500">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-[16px] font-semibold text-stone-900">
-                        {item.value}
-                      </p>
-                    </div>
+                  {snapshotCards.map((card, index) => (
+                    <button
+                      key={card.id}
+                      type="button"
+                      onClick={() => setActiveSnapshot(index)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all ${
+                        index === activeSnapshot
+                          ? "bg-amber-700"
+                          : "bg-stone-300"
+                      }`}
+                      aria-label={`Show ${card.title}`}
+                    />
                   ))}
                 </div>
               </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSnapshot.id}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="space-y-4 px-5 py-5"
+                >
+                  <p className="font-mono text-[12px] leading-6 text-stone-700">
+                    {currentSnapshot.lines.map((line, index) => (
+                      <span key={line.label}>
+                        <span className="text-amber-800">{line.label}</span> ={" "}
+                        {line.value}
+                        {index < currentSnapshot.lines.length - 1 ? <br /> : null}
+                      </span>
+                    ))}
+                  </p>
+
+                  <div className="grid gap-3">
+                    {currentSnapshot.metrics.map((item) => (
+                      <div key={item.label} className="metric-card">
+                        <p className="text-[11px] uppercase tracking-[0.22em] text-stone-500">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-[16px] font-semibold text-stone-900">
+                          {item.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
