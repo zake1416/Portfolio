@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -13,7 +12,6 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // set active based on current path
     const current = navLinks.find((nav) =>
       nav.path === "/"
         ? location.pathname === "/"
@@ -24,12 +22,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -37,17 +30,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    // <nav
-    //   className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${
-    //     scrolled ? "bg-primary" : "bg-transparent"
-    //   }`}
-    // >
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-4 fixed top-0 z-20 backdrop-blur-md ${
-        scrolled ? "bg-[#050816]/90 border-b border-white/10" : "bg-transparent"
+      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center py-4 backdrop-blur-md ${
+        scrolled
+          ? "border-b border-stone-900/10 bg-[#faf5ec]/85 shadow-[0_10px_30px_rgba(120,96,64,0.08)]"
+          : "bg-transparent"
       }`}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
         <Link
           to="/"
           className="flex items-center gap-2"
@@ -56,20 +46,19 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-20 h-10 object-contain" />
-          <p className="text-slate-100 text-[18px] font-bold cursor-pointer flex">
-            &nbsp;<span className="sm:block hidden">| Home</span>
+          <img src={logo} alt="logo" className="h-10 w-20 object-contain" />
+          <p className="flex cursor-pointer text-[18px] font-semibold text-stone-900">
+            &nbsp;<span className="hidden sm:block">| Home</span>
           </p>
         </Link>
 
-        {/* Desktop menu */}
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="hidden list-none flex-row gap-10 sm:flex">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-cyan-300" : "text-slate-200"
-              } hover:text-cyan-200 text-[16px] font-semibold tracking-wide cursor-pointer flex`}
+                active === nav.title ? "text-amber-700" : "text-stone-700"
+              } flex cursor-pointer text-[15px] font-semibold uppercase tracking-[0.08em] hover:text-stone-900`}
             >
               <Link
                 to={nav.path}
@@ -84,26 +73,25 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Mobile menu */}
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="flex flex-1 items-center justify-end sm:hidden">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain invert"
+            className="h-[28px] w-[28px] object-contain"
             onClick={() => setToggle(!toggle)}
           />
 
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 bg-[#0b1226] border border-white/10 absolute top-20 right-0 mx-4 my-2 min-w-[160px] z-10 rounded-xl`}
+            } absolute right-0 top-20 z-10 mx-4 my-2 min-w-[160px] rounded-xl border border-stone-900/10 bg-[#fffaf2] p-6 shadow-[0_18px_40px_rgba(120,96,64,0.12)]`}
           >
-            <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+            <ul className="flex flex-1 flex-col items-start justify-end gap-4 list-none">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
-                  className={`font-semibold cursor-pointer text-[14px] ${
-                    active === nav.title ? "text-cyan-300" : "text-slate-200"
+                  className={`cursor-pointer text-[14px] font-semibold ${
+                    active === nav.title ? "text-amber-700" : "text-stone-700"
                   }`}
                 >
                   <Link

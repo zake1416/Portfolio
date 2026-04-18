@@ -10,12 +10,10 @@ const Contact = () => {
   const formAction = "https://formspree.io/f/yourFormId";
 
   return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
+    <div className="flex h-full min-h-0 flex-col-reverse gap-6 overflow-hidden lg:flex-row">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-[#0b1226] border border-white/10 p-8 rounded-2xl'
+        className="paper-panel flex min-h-0 flex-[0.9] flex-col rounded-[28px] p-5 sm:p-6"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
@@ -23,60 +21,69 @@ const Contact = () => {
         <form
           action={formAction}
           method="POST"
-          className='mt-12 flex flex-col gap-8'
+          className="mt-6 flex flex-1 flex-col gap-4"
         >
           <input type="hidden" name="_subject" value="Portfolio inquiry" />
-          <label className='flex flex-col'>
-            <span className='text-slate-200 font-medium mb-4'>Your Name</span>
+          <label className="flex flex-col">
+            <span className="mb-2 text-sm font-medium uppercase tracking-[0.16em] text-stone-500">
+              Your Name
+            </span>
             <input
-              type='text'
-              name='name'
+              type="text"
+              name="name"
               placeholder="Your name"
               required
-              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
+              className="rounded-2xl border border-stone-900/10 bg-white/70 px-4 py-3 font-medium text-stone-900 outline-none placeholder:text-stone-400 focus:border-amber-700/50"
             />
           </label>
-          <label className='flex flex-col'>
-            <span className='text-slate-200 font-medium mb-4'>Your Email</span>
+          <label className="flex flex-col">
+            <span className="mb-2 text-sm font-medium uppercase tracking-[0.16em] text-stone-500">
+              Your Email
+            </span>
             <input
-              type='email'
-              name='email'
+              type="email"
+              name="email"
               placeholder="your@email.com"
               required
-              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
+              className="rounded-2xl border border-stone-900/10 bg-white/70 px-4 py-3 font-medium text-stone-900 outline-none placeholder:text-stone-400 focus:border-amber-700/50"
             />
           </label>
-          <label className='flex flex-col'>
-            <span className='text-slate-200 font-medium mb-4'>Your Message</span>
+          <label className="flex flex-col">
+            <span className="mb-2 text-sm font-medium uppercase tracking-[0.16em] text-stone-500">
+              Your Message
+            </span>
             <textarea
-              rows={7}
-              name='message'
-              placeholder='Share your idea or role details.'
+              rows={4}
+              name="message"
+              placeholder="Share your idea or role details."
               required
-              className='bg-[#111827] py-4 px-6 placeholder:text-slate-500 text-slate-100 rounded-lg outline-none border border-white/10 focus:border-cyan-400/60 font-medium'
+              className="min-h-[110px] rounded-2xl border border-stone-900/10 bg-white/70 px-4 py-3 font-medium text-stone-900 outline-none placeholder:text-stone-400 focus:border-amber-700/50"
             />
           </label>
 
           <button
-            type='submit'
-            className='bg-cyan-400/20 hover:bg-cyan-400/30 transition-colors py-3 px-8 rounded-xl outline-none w-fit text-slate-100 font-semibold border border-cyan-400/40 shadow-md shadow-cyan-500/20'
+            type="submit"
+            className="w-fit rounded-full border border-amber-900/10 bg-stone-900 px-6 py-3 font-semibold text-stone-50 shadow-[0_14px_28px_rgba(85,65,39,0.14)] transition-colors hover:bg-amber-800"
           >
             Send
           </button>
         </form>
-        <p className="mt-4 text-xs text-slate-400">
+        <p className="mt-4 text-xs text-stone-500">
           Replies go directly to my inbox. Expect a response within 48 hours.
         </p>
       </motion.div>
 
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+        className="paper-panel geometric-grid h-[220px] min-h-0 rounded-[28px] bg-[#f2e9dd]/70 lg:h-auto lg:flex-1"
       >
         <EarthCanvas />
       </motion.div>
     </div>
   );
 };
+
+Contact.sectionClassName =
+  "relative z-0 mx-auto flex h-full max-w-7xl flex-col justify-center px-6 py-4 sm:px-16 sm:py-6";
 
 export default SectionWrapper(Contact, "contact");

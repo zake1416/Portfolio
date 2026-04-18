@@ -4,8 +4,8 @@ import { Hero } from "../components";
 
 const Home = () => {
   return (
-    <main className="min-h-screen pt-8">
-      <div className="w-full">
+    <main className="h-[100svh] overflow-hidden pt-16 sm:pt-20">
+      <div className="h-full w-full">
         <Hero />
       </div>
     </main>

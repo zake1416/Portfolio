@@ -16,37 +16,45 @@ const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
+        background: "rgba(255, 252, 246, 0.94)",
+        color: "#2d2418",
+        border: "1px solid rgba(109, 89, 63, 0.12)",
+        boxShadow: "0 18px 44px rgba(133, 111, 81, 0.08)",
+        borderRadius: "24px",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+      contentArrowStyle={{ borderRight: "7px solid rgba(214, 196, 169, 0.9)" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
+        <div className="flex h-full w-full items-center justify-center">
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className="h-[60%] w-[60%] object-contain"
           />
         </div>
       }
     >
-      <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
-        <p
-          className='text-secondary text-[16px] font-semibold'
-          style={{ margin: 0 }}
-        >
-          {experience.company_name}
-        </p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-[30px] font-semibold text-stone-900">
+            {experience.title}
+          </h3>
+          <p
+            className="text-[16px] font-semibold text-stone-600"
+            style={{ margin: 0 }}
+          >
+            {experience.company_name}
+          </p>
+        </div>
+        <span className="signal-chip hidden sm:inline-flex">AI Systems</span>
       </div>
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
+      <ul className="ml-5 mt-5 list-disc space-y-2">
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className="pl-1 text-[14px] tracking-wide text-stone-700"
           >
             {point}
           </li>
@@ -61,14 +69,14 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
-          Applied work so far
+          Shipping record
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-          Experience.
+          AI systems across research, delivery, and product.
         </h2>
       </motion.div>
 
-      <div className='mt-20 flex flex-col'>
+      <div className="mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard

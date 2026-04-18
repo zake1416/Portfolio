@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -14,7 +13,7 @@ import BlogPost from "./pages/BlogPost";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="min-h-screen relative z-0 text-slate-100">
+      <div className="relative z-0 min-h-[100svh] overflow-x-hidden text-stone-900">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

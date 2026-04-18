@@ -24,35 +24,38 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className='bg-[#0b1226] border border-white/10 p-5 rounded-2xl sm:w-[360px] w-full'
+        className="paper-panel w-full rounded-[28px] p-5 sm:w-[360px]"
       >
-        <div className='relative w-full h-[230px]'>
+        <div className="relative h-[230px] w-full">
           <img
             src={image}
-            alt='project_image'
-            className='w-full h-full object-cover rounded-2xl'
+            alt="project_image"
+            className="h-full w-full rounded-2xl object-cover"
           />
 
-          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+          <div className="card-img_hover absolute inset-0 m-3 flex justify-between">
+            <span className="signal-chip h-fit">Applied AI</span>
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+              className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
             >
               <img
                 src={github}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
+                alt="source code"
+                className="h-1/2 w-1/2 object-contain"
               />
             </div>
           </div>
         </div>
 
-        <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+        <div className="mt-5">
+          <h3 className="text-[28px] font-semibold text-stone-900">{name}</h3>
+          <p className="mt-2 text-[14px] leading-6 text-stone-600">
+            {description}
+          </p>
         </div>
 
-        <div className='mt-4 flex flex-wrap gap-2'>
+        <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <p
               key={`${name}-${tag.name}`}
@@ -71,22 +74,22 @@ const Works = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+        <p className={styles.sectionSubText}>Selected builds</p>
+        <h2 className={styles.sectionHeadText}>Systems, not just side projects.</h2>
       </motion.div>
 
-      <div className='w-full flex'>
+      <div className="flex w-full">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
+          className="mt-3 max-w-3xl text-[17px] leading-[30px] text-stone-600"
         >
-          Selected work focused on LLM applications, agent systems, and
-          production-ready AI pipelines. Each project highlights shipping
-          outcomes, not just demos.
+          These projects center on applied AI execution: agent coordination,
+          retrieval, grounded outputs, user-facing workflows, and the
+          instrumentation needed to make model behavior useful in production.
         </motion.p>
       </div>
 
-      <div className='mt-20 flex flex-wrap gap-7'>
+      <div className="mt-20 flex flex-wrap gap-7">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

@@ -16,27 +16,29 @@ const FeedbackCard = ({
 }) => (
   <motion.div
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
-    className='bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full'
+    className="paper-panel w-full rounded-3xl p-8 xs:w-[320px]"
   >
-    <p className='text-white font-black text-[48px]'>"</p>
+    <p className="text-[44px] font-semibold text-amber-800">"</p>
 
-    <div className='mt-1'>
-      <p className='text-white tracking-wider text-[18px]'>{testimonial}</p>
+    <div className="mt-1">
+      <p className="text-[17px] leading-7 tracking-wide text-stone-700">
+        {testimonial}
+      </p>
 
-      <div className='mt-7 flex justify-between items-center gap-1'>
-        <div className='flex-1 flex flex-col'>
-          <p className='text-white font-medium text-[16px]'>
-            <span className='blue-text-gradient'>@</span> {name}
+      <div className="mt-7 flex items-center justify-between gap-3">
+        <div className="flex flex-1 flex-col">
+          <p className="text-[16px] font-semibold text-stone-900">
+            <span className="blue-text-gradient">@</span> {name}
           </p>
-          <p className='mt-1 text-secondary text-[12px]'>
-            {designation} of {company}
+          <p className="mt-1 text-[12px] text-stone-500">
+            {designation} at {company}
           </p>
         </div>
 
         <img
           src={image}
           alt={`feedback_by-${name}`}
-          className='w-10 h-10 rounded-full object-cover'
+          className="h-10 w-10 rounded-full object-cover"
         />
       </div>
     </div>
@@ -45,16 +47,14 @@ const FeedbackCard = ({
 
 const Feedbacks = () => {
   return (
-    <div className={`mt-12 bg-black-100 rounded-[20px]`}>
-      <div
-        className={`bg-tertiary rounded-2xl ${styles.padding} min-h-[300px]`}
-      >
+    <div className="mt-12 rounded-[28px] bg-[#f1e8da]/65">
+      <div className={`${styles.padding} rounded-2xl min-h-[220px] geometric-grid`}>
         <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>What others say</p>
-          <h2 className={styles.sectionHeadText}>Testimonials.</h2>
+          <p className={styles.sectionSubText}>External signal</p>
+          <h2 className={styles.sectionHeadText}>How collaborators describe my AI work.</h2>
         </motion.div>
       </div>
-      <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-7`}>
+      <div className={`-mt-10 flex flex-wrap gap-7 pb-14 ${styles.paddingX}`}>
         {testimonials.map((testimonial, index) => (
           <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
         ))}
