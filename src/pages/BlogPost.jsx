@@ -124,7 +124,7 @@ const BlogPost = () => {
         return (
           <pre
             key={`${block.type}-${index}`}
-            className="overflow-x-auto rounded-2xl border border-stone-900/10 bg-[#2b241c] p-5 text-sm text-stone-50"
+            className="theme-code-block overflow-x-auto rounded-2xl border border-stone-900/10 p-5 text-sm text-stone-50"
           >
             {block.language && (
               <span className="text-[10px] uppercase tracking-[0.2em] text-amber-300">

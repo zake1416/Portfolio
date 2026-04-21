@@ -72,15 +72,15 @@ const Hero = () => {
 
   return (
     <section className="relative flex h-full min-h-0 w-full items-start justify-center overflow-hidden sm:items-center">
-      <div className="absolute left-[8%] top-[18%] h-24 w-24 rounded-full border border-stone-900/10 bg-white/40 blur-[2px]" />
-      <div className="absolute right-[10%] top-[22%] h-28 w-28 rotate-12 rounded-[28px] border border-amber-800/10 bg-[#efe2cc]/55" />
-      <div className="absolute bottom-[14%] left-[12%] h-16 w-16 border border-teal-900/10 bg-[#dce9e6]/60" />
+      <div className="absolute left-[8%] top-[18%] h-20 w-20 rounded-full border border-stone-900/10 bg-white/40 blur-[2px]" />
+      <div className="absolute right-[10%] top-[22%] h-24 w-24 rotate-12 rounded-[24px] border border-amber-800/10 bg-[#efe2cc]/55" />
+      <div className="absolute bottom-[16%] left-[12%] h-14 w-14 border border-teal-900/10 bg-[#dce9e6]/60" />
       <div className="absolute inset-0 z-0 geometric-grid" />
-      <div className="absolute inset-x-0 top-6 z-10 mx-auto max-w-[1320px] px-6 sm:top-8 lg:px-10 xl:px-12">
-        <div className="grid items-start gap-8 pb-24 sm:pb-0 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 xl:grid-cols-[240px_minmax(0,1fr)_340px] xl:gap-14">
+      <div className="absolute inset-x-0 top-4 z-10 mx-auto max-w-[1240px] px-5 sm:top-6 lg:px-8 xl:px-10">
+        <div className="grid items-start gap-6 pb-24 sm:pb-0 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-8 xl:grid-cols-[220px_minmax(0,1fr)_300px] xl:gap-10">
           <div className="hidden xl:block">
             <div className="console-panel">
-              <div className="flex items-center justify-between border-b border-stone-900/10 px-5 py-3">
+              <div className="flex items-center justify-between border-b border-stone-900/10 px-4 py-3">
                 <p className="text-[11px] uppercase tracking-[0.28em] text-stone-500">
                   {currentSnapshot.title}
                 </p>
@@ -107,9 +107,9 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -18 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="space-y-4 px-5 py-5"
+                  className="space-y-3 px-4 py-4"
                 >
-                  <p className="font-mono text-[12px] leading-6 text-stone-700">
+                  <p className="font-mono text-[11px] leading-5 text-stone-700">
                     {currentSnapshot.lines.map((line, index) => (
                       <span key={line.label}>
                         <span className="text-amber-800">{line.label}</span> ={" "}
@@ -125,7 +125,7 @@ const Hero = () => {
                         <p className="text-[11px] uppercase tracking-[0.22em] text-stone-500">
                           {item.label}
                         </p>
-                        <p className="mt-1 text-[16px] font-semibold text-stone-900">
+                        <p className="mt-1 text-[15px] font-semibold text-stone-900">
                           {item.value}
                         </p>
                       </div>
@@ -136,7 +136,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex flex-col lg:max-w-[40rem] xl:max-w-[42rem]">
+          <div className="flex flex-col lg:max-w-[35rem] xl:max-w-[38rem]">
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 rounded-full bg-amber-700" />
               <p className="text-[12px] uppercase tracking-[0.32em] text-stone-500 sm:text-[13px]">
@@ -144,16 +144,16 @@ const Hero = () => {
               </p>
             </div>
 
-            <p className="mt-4 text-[13px] font-semibold uppercase tracking-[0.24em] text-stone-600 sm:text-[14px]">
+            <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.24em] text-stone-600 sm:text-[13px]">
               Abhishek Birajdar
             </p>
 
-            <h1 className="mt-3 text-[30px] font-semibold leading-[0.96] text-stone-900 sm:text-[50px] lg:text-[60px] xl:text-[68px]">
+            <h1 className="mt-3 text-[28px] font-semibold leading-[0.94] text-stone-900 sm:text-[42px] lg:text-[52px] xl:text-[58px]">
               Shipping AI systems
               <span className="block text-amber-800">that hold up in production.</span>
             </h1>
 
-            <p className="mt-4 max-w-[38rem] text-[14px] leading-relaxed text-stone-600 sm:text-[17px] lg:text-[18px]">
+            <p className="mt-3 max-w-[34rem] text-[13px] leading-relaxed text-stone-600 sm:text-[15px] lg:text-[16px]">
               I build retrieval pipelines, agent workflows, and model-powered
               product features with the engineering discipline needed for real
               users: instrumentation, evaluation, fallbacks, and deployment
@@ -166,7 +166,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-6 flex max-w-[42rem] flex-wrap gap-3">
+            <div className="mt-5 flex max-w-[38rem] flex-wrap gap-2.5">
               {focusAreas.map((item) => (
                 <span key={item} className="signal-chip">
                   {item}
@@ -175,13 +175,13 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative z-[1] hidden h-[44vh] min-h-[320px] lg:block xl:h-[46vh]">
+          <div className="relative z-[1] hidden h-[40vh] min-h-[280px] lg:block xl:h-[42vh]">
             <ComputersCanvas />
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-20 left-1/2 z-10 hidden w-[103%] max-w-[1800px] -translate-x-1/2 overflow-hidden sm:block lg:bottom-8">
+      <div className="absolute bottom-14 left-1/2 z-10 hidden w-[102%] max-w-[1800px] -translate-x-1/2 overflow-hidden sm:block lg:bottom-4">
         <div className="hero-marquee">
           <div className="hero-marquee-track">
             <span className="hero-marquee-item">
@@ -206,7 +206,7 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className="absolute bottom-4 hidden w-full items-center justify-center sm:flex">
+      <div className="absolute bottom-2 hidden w-full items-center justify-center sm:flex">
         <a href="/about">
           <div className="flex h-[44px] w-[26px] justify-center rounded-3xl border-2 border-stone-400 p-2">
             <motion.div

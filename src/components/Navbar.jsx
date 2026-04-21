@@ -4,12 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const current = navLinks.find((nav) =>
@@ -29,11 +31,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const themeOptions = [
+    { id: "dark", label: "Dark" },
+    { id: "light", label: "Light" },
+  ];
+
   return (
     <nav
-      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center py-4 backdrop-blur-md ${
+      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center py-3 backdrop-blur-md ${
         scrolled
-          ? "border-b border-stone-900/10 bg-[#faf5ec]/85 shadow-[0_10px_30px_rgba(120,96,64,0.08)]"
+          ? "theme-navbar-shell border-b border-stone-900/10"
           : "bg-transparent"
       }`}
     >
@@ -46,45 +53,62 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="h-10 w-20 object-contain" />
-          <p className="flex cursor-pointer text-[18px] font-semibold text-stone-900">
+          <img src={logo} alt="logo" className="h-9 w-16 object-contain" />
+          <p className="flex cursor-pointer text-[16px] font-semibold text-stone-900">
             &nbsp;<span className="hidden sm:block">| Home</span>
           </p>
         </Link>
 
-        <ul className="hidden list-none flex-row gap-10 sm:flex">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-amber-700" : "text-stone-700"
-              } flex cursor-pointer text-[15px] font-semibold uppercase tracking-[0.08em] hover:text-stone-900`}
-            >
-              <Link
-                to={nav.path}
-                onClick={() => {
-                  setActive(nav.title);
-                  window.scrollTo(0, 0);
-                }}
+        <div className="hidden items-center gap-6 sm:flex">
+          <ul className="list-none flex-row gap-8 sm:flex">
+            {navLinks.map((nav) => (
+              <li
+                key={nav.id}
+                className={`${
+                  active === nav.title ? "text-amber-700" : "text-stone-700"
+                } flex cursor-pointer text-[13px] font-semibold uppercase tracking-[0.08em] hover:text-stone-900`}
               >
-                {nav.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                <Link
+                  to={nav.path}
+                  onClick={() => {
+                    setActive(nav.title);
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  {nav.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="theme-toggle">
+            {themeOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => setTheme(option.id)}
+                className={`theme-toggle-button ${
+                  theme === option.id ? "theme-toggle-button-active" : ""
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="flex flex-1 items-center justify-end sm:hidden">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="h-[28px] w-[28px] object-contain"
+            className="theme-menu-icon h-[28px] w-[28px] object-contain"
             onClick={() => setToggle(!toggle)}
           />
 
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } absolute right-0 top-20 z-10 mx-4 my-2 min-w-[160px] rounded-xl border border-stone-900/10 bg-[#fffaf2] p-6 shadow-[0_18px_40px_rgba(120,96,64,0.12)]`}
+            } theme-mobile-menu absolute right-0 top-16 z-10 mx-4 my-2 min-w-[160px] flex-col rounded-xl border border-stone-900/10 p-6`}
           >
             <ul className="flex flex-1 flex-col items-start justify-end gap-4 list-none">
               {navLinks.map((nav) => (
@@ -107,6 +131,26 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-5 flex w-full flex-col gap-2 border-t border-stone-900/10 pt-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
+                Theme
+              </p>
+              <div className="theme-toggle w-full">
+                {themeOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setTheme(option.id)}
+                    className={`theme-toggle-button flex-1 ${
+                      theme === option.id ? "theme-toggle-button-active" : ""
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

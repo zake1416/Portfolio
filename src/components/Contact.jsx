@@ -75,7 +75,7 @@ const Contact = () => {
 
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className="paper-panel geometric-grid h-[220px] min-h-0 rounded-[28px] bg-[#f2e9dd]/70 lg:h-auto lg:flex-1"
+        className="paper-panel theme-canvas-shell geometric-grid h-[220px] min-h-0 rounded-[28px] lg:h-auto lg:flex-1"
       >
         <EarthCanvas />
       </motion.div>

@@ -47,7 +47,7 @@ const FeedbackCard = ({
 
 const Feedbacks = () => {
   return (
-    <div className="mt-12 rounded-[28px] bg-[#f1e8da]/65">
+    <div className="theme-section-shell mt-12 rounded-[28px]">
       <div className={`${styles.padding} rounded-2xl min-h-[220px] geometric-grid`}>
         <motion.div variants={textVariant()}>
           <p className={styles.sectionSubText}>External signal</p>

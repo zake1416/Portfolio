@@ -1,7 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import { Quaternion } from "three";
 
 import CanvasLoader from "../Loader";
 
@@ -17,7 +16,6 @@ const Computers = ({ isMobile }) => {
   const rightArmBase = useRef({ x: 0, y: 0, z: 0 });
   const rightHandBase = useRef({ x: 0, y: 0, z: 0 });
   const headBase = useRef({ x: 0, y: 0, z: 0 });
-  const rightArmBaseQuat = useRef(new Quaternion());
   const rootBoneBase = useRef({
     position: { x: 0, y: 0, z: 0 },
     rotation: { x: 0, y: 0, z: 0 },
@@ -44,7 +42,6 @@ const Computers = ({ isMobile }) => {
         y: rightArm.current.rotation.y,
         z: rightArm.current.rotation.z,
       };
-      rightArmBaseQuat.current.copy(rightArm.current.quaternion);
     }
 
     if (rightHand.current) {
@@ -103,16 +100,15 @@ const Computers = ({ isMobile }) => {
     }
 
     if (rightArm.current) {
-      rightArm.current.quaternion.copy(rightArmBaseQuat.current);
-      rightArm.current.rotation.x -= 1.05;
-      rightArm.current.rotation.y -= 0.22;
-      rightArm.current.rotation.z -= 1.2 - wave * 0.75;
+      rightArm.current.rotation.x = rightArmBase.current.x - 0.55;
+      rightArm.current.rotation.y = rightArmBase.current.y - 0.12 + wave * 0.16;
+      rightArm.current.rotation.z = rightArmBase.current.z - 0.85 + wave * 0.42;
     }
 
     if (rightHand.current) {
-      rightHand.current.rotation.x = rightHandBase.current.x + 0.1;
-      rightHand.current.rotation.y = rightHandBase.current.y + wave * 0.85;
-      rightHand.current.rotation.z = rightHandBase.current.z + wave * 0.32;
+      rightHand.current.rotation.x = rightHandBase.current.x;
+      rightHand.current.rotation.y = rightHandBase.current.y + wave * 0.55;
+      rightHand.current.rotation.z = rightHandBase.current.z + wave * 0.18;
     }
 
     if (leftArm.current) {
